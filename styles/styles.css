@@ -2,6 +2,7 @@
     position: absolute;
     right: 20px;
     bottom: 5px;
+    text-align: right;
 }
 
 body {

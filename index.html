@@ -2,12 +2,25 @@
 <html>
     <head>
         <title>Fourier Series</title>
-        <script src = "scripts/main.js"></script>
-        <script src = "scripts/math.js"></script>
-        <link rel = "stylesheet" href = "styles/styles.css"/>
+        <script src = "scripts/form.js"></script>
+        <link rel = stylesheet href = "styles/formStyles.css">
     </head>
     <body>
-        <canvas id = canvas></canvas>
-        <p id = "credit">Eric Kugel and Leo Ting 2022</p>
+        <div id = "form">
+            <div id = "form-contents">
+                <button id = "graph" onclick = "graph()">
+                    Graph
+                </button>
+                <div class = "circle-input">
+                    <a class = "exit" href = "#" onclick = "exit(this)">x</a><br/>
+                    Radius:   <input type = "text" placeholder = "0.5"></input><br/><br/>
+                    Theta:   <input type = "text" placeholder = "90"></input><br/><br/>
+                    Frequency:   <input type = "text" placeholder = "1"></input><br/><br/>
+                </div>
+            </div>
+            <div>
+                <button id = "button" onclick = "plus()">+</button>
+            </div>
+        </div>
     </body>
 </html>

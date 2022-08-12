@@ -1,117 +1,84 @@
 var canvas;
 var ctx;
-const FPS = 24;
-const SIZE = 50
+const FPS = 60;
+const SIZE = 50;
+var circle;
 
-var circles = [];
-var colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
-<<<<<<< HEAD
-var points = [];
-=======
-var circles = [
-  {
-    radius: 1,
-    theta: Math.PI / 2,
-    frequency: 0
-  },
-  {
-    radius: 1,
-    theta: 0,
-    frequency: 1,
-  },
-  {
-    radius: 1,
-    theta: 0,
-    frequency: -1
-  },
-  {
-    radius: -1/2,
-    theta: 0,
-    frequency: 2
-  },
-  {
-    radius: 1/2,
-    theta: 0,
-    frequency: -2
-  }
-]
->>>>>>> c9c30988bfe5329d75d1bcb977f67e8a03bf141f
-
+const points = [];
+var circles;
+var colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"];
 class Circle {
-    // speed is in radians per tick
-    constructor(index) {
+    constructor(index = 0) {
         this.theta = circles[index].theta;
-        if (index = 0) {
-          this.x = screen.innerWidth / 2;
-          this.y = screen.innerHeight / 2;
+        if (index == 0) {
+          this.x = window.innerWidth / 2;
+          this.y = window.innerHeight / 2;
         } else {
           this.x = circles[index - 1].circle.point_x;
           this.y = circles[index - 1].circle.point_y
         }
         this.radius = circles[index].radius * SIZE;
+        if (this.radius < 0) {
+            this.radius = Math.abs(this.radius);
+            this.theta += Math.PI;
+        }
         this.speed = (circles[index].frequency * Math.PI * 2) / FPS;
-        this.point_x = this.x + Math.cos(this.theta)
-        this.point_y = this.y + Math.sin(this.theta);
+        this.point_x = this.x + Math.cos(this.theta) * this.radius;
+        this.point_y = this.y + Math.sin(this.theta) * this.radius;
         this.index = index;
         circles[index].circle = this;
+        if (index < circles.length - 1) {
+            new Circle(index + 1);
+        }
     }
 
-    update(coords = null) {
-        if (coords != null) {
-            this.x = coords[0];
-            this.y = coords[1];
+    update() {
+        if (this.index != 0) {
+            this.x = circles[this.index - 1].circle.point_x;
+            this.y = circles[this.index - 1].circle.point_y;
         }
         this.theta += this.speed
         if (this.theta > 2 * Math.PI) {
             this.theta = this.theta % Math.PI;
         }
-        this.point_x = this.x + Math.cos(this.theta) * this.size;
-        this.point_y = this.y - Math.sin(this.theta) * this.size;
-        if (this.child != null) {
-            this.child.update([this.point_x, this.point_y]);
+        this.point_x = this.x + Math.cos(this.theta) * this.radius;
+        this.point_y = this.y - Math.sin(this.theta) * this.radius;
+        if (this.index < circles.length - 1) {
+            circles[this.index + 1].circle.update();
         } else {
             points.push([this.point_x, this.point_y]);
         }
     }
 
     draw() {
-        ctx.strokeStyle = colors[this.children % colors.length];
+        ctx.strokeStyle = colors[this.index % colors.length];
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, Math.abs(this.radius), 0, 2 * Math.PI);
         ctx.stroke();
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.point_x, this.point_y);
         ctx.stroke();
-        if (this.child != null) {
-            this.child.draw();
+        if (this.index < circles.length - 1) {
+            circles[this.index + 1].circle.draw();
         }
     }    
 }
 
-window.onload = function() {
+function main() {
+    circles = JSON.parse(document.cookie.substring(8));
     canvas = document.getElementById("canvas");
     canvas.setAttribute("width", window.innerWidth);
     canvas.setAttribute("height", window.innerHeight);
     ctx = canvas.getContext("2d");
-    main();
-}
-
-function main() {
-<<<<<<< HEAD
-    circles.push(new Circle(window.innerWidth / 2, window.innerHeight / 2, Math.PI * 2 / (FPS * 4), 250, 10));
-=======
-    circles.push(new Circle(window.innerWidth / 2, window.innerHeight / 2, Math.PI * 2 / (FPS * 4), 50, 5));
->>>>>>> c9c30988bfe5329d75d1bcb977f67e8a03bf141f
+    circle = new Circle();
     tick();
 }
 
 function tick() {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    for (var i = 0; i < circles.length; i++) {
-        circles[i].update();
-        circles[i].draw();
-    }
+    circle.update();
+    circle.draw();
 
     if (points.length > 0) {
         ctx.strokeStyle = "black";
@@ -122,5 +89,9 @@ function tick() {
         }
         ctx.stroke();
     }
-    setTimeout(tick, 40);
+    setTimeout(tick, 1000 / FPS);
+}
+
+window.onload = function() {
+  main();
 }
