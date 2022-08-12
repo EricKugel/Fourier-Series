@@ -4,6 +4,7 @@ const FPS = 24;
 
 var circles = [];
 var colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"]
+var points = [];
 
 class Circle {
     // speed is in radians per tick
@@ -35,6 +36,8 @@ class Circle {
         this.point_y = this.y - Math.sin(this.theta) * this.size;
         if (this.child != null) {
             this.child.update([this.point_x, this.point_y]);
+        } else {
+            points.push([this.point_x, this.point_y]);
         }
     }
 
@@ -62,8 +65,7 @@ window.onload = function() {
 }
 
 function main() {
-    debugger;
-    circles.push(new Circle(window.innerWidth / 2, window.innerHeight / 2, Math.PI * 2 / (FPS * 4), 250, 5));
+    circles.push(new Circle(window.innerWidth / 2, window.innerHeight / 2, Math.PI * 2 / (FPS * 4), 250, 10));
     tick();
 }
 
@@ -72,6 +74,16 @@ function tick() {
     for (var i = 0; i < circles.length; i++) {
         circles[i].update();
         circles[i].draw();
+    }
+
+    if (points.length > 0) {
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.moveTo(points[0][0], points[0][1]);
+        for (var i = 0; i < points.length; i++) {
+            ctx.lineTo(points[i][0], points[i][1]);
+        }
+        ctx.stroke();
     }
     setTimeout(tick, 40);
 }
