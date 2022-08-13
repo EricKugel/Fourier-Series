@@ -10,7 +10,7 @@ window.onload = function() {
         for (var i = 0; i < circles.length; i++) {
             var circle = circles[i];
             var input_fields = document.getElementsByClassName("circle-input")[i].getElementsByTagName("input");
-            input_fields[0].value = str(Math.cos(circle.theta) * circle.radius) + ", " + str(Math.sin(circle.theta) * circle.radius);
+            input_fields[0].value = Math.cos(circle.theta) * circle.radius + ", " + Math.sin(circle.theta) * circle.radius;
             input_fields[1].value = circle.frequency;
         }
     }
