@@ -42,6 +42,7 @@ function graph() {
             frequency: parseFloat(input_fields[1].value)
         });
     }
+
     document.cookie = "circles=" + JSON.stringify(circles);
     window.location.replace("draw.html");
 }
