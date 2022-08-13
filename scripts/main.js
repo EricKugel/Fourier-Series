@@ -52,22 +52,23 @@ class Circle {
     }
 
     draw() {
-        ctx.strokeStyle = colors[this.index % colors.length];
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, Math.abs(this.radius), 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.point_x, this.point_y);
-        ctx.stroke();
-        if (this.index < circles.length - 1) {
-            circles[this.index + 1].circle.draw();
+        if (circles[this.index].frequency != 0) {
+            ctx.strokeStyle = colors[Math.abs(circles[this.index].frequency).round() % colors.length];
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, Math.abs(this.radius), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.point_x, this.point_y);
+            ctx.stroke();
+            if (this.index < circles.length - 1) {
+                circles[this.index + 1].circle.draw();
+            }
         }
     }    
 }
 
 function main() {
-    debugger;
     var unsorted_circles = JSON.parse(document.cookie.substring(8));
     circles = []
     for (var i = 0; i < unsorted_circles.length; i++) {
