@@ -10,9 +10,8 @@ window.onload = function() {
         for (var i = 0; i < circles.length; i++) {
             var circle = circles[i];
             var input_fields = document.getElementsByClassName("circle-input")[i].getElementsByTagName("input");
-            input_fields[0].value = circle.radius;
-            input_fields[1].value = circle.theta;
-            input_fields[2].value = circle.frequency;
+            input_fields[0].value = str(Math.cos(circle.theta) * circle.radius) + ", " + str(Math.sin(circle.theta) * circle.radius);
+            input_fields[1].value = circle.frequency;
         }
     }
 }
@@ -34,11 +33,14 @@ function graph() {
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
         var input_fields = input.getElementsByTagName("input");
+        var point = input_fields[0].value.split(",");
+        var x = parseFloat(point[0]);
+        var y = parseFloat(point[1]);
         circles.push({
-            radius: parseFloat(input_fields[0].value),
-            theta: parseFloat(input_fields[1].value),
-            frequency: parseFloat(input_fields[2].value)
-        })
+            radius: Math.sqrt(x ** 2 + y ** 2),
+            theta: (Math.atan(y / x)) + ((x < 0) ? Math.PI : 0),
+            frequency: parseFloat(input_fields[1].value)
+        });
     }
     document.cookie = "circles=" + JSON.stringify(circles);
     window.location.replace("draw.html");
