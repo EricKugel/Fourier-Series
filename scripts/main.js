@@ -53,7 +53,7 @@ class Circle {
 
     draw() {
         if (circles[this.index].frequency != 0) {
-            ctx.strokeStyle = colors[Math.round(Math.abs(circles[this.index].frequency)) % colors.length];
+            ctx.strokeStyle = colors[(Math.round(Math.abs(circles[this.index].frequency)) - 1) % colors.length];
             ctx.beginPath();
             ctx.arc(this.x, this.y, Math.abs(this.radius), 0, 2 * Math.PI);
             ctx.stroke();
