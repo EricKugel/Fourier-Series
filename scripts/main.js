@@ -52,6 +52,7 @@ class Circle {
     }
 
     draw() {
+        debugger;
         if (circles[this.index].frequency != 0) {
             ctx.strokeStyle = colors[Math.abs(circles[this.index].frequency).round() % colors.length];
             ctx.beginPath();
@@ -61,9 +62,9 @@ class Circle {
             ctx.moveTo(this.x, this.y);
             ctx.lineTo(this.point_x, this.point_y);
             ctx.stroke();
-            if (this.index < circles.length - 1) {
-                circles[this.index + 1].circle.draw();
-            }
+        }
+        if (this.index < circles.length - 1) {
+            circles[this.index + 1].circle.draw();
         }
     }    
 }
