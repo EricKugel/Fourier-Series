@@ -19,7 +19,7 @@ window.onload = function() {
 function plus() {
     const element = document.createElement("div");
     element.setAttribute("class", "circle-input");
-    element.innerHTML = '<a class = "exit" href = "#" onclick = "exit(this)">x</a><br/>Radius:   <input type = "text" placeholder = "0.5"></input><br/><br/>Theta:   <input type = "text" placeholder = "90"></input><br/><br/>Frequency:   <input type = "text" placeholder = "1"></input><br/><br/>'
+    element.innerHTML = '<a class = "exit" href = "#" onclick = "exit(this)">x</a><br/>X, Y   <input type = "text" placeholder = "2, 3"></input><br/><br/>Frequency:   <input type = "text" placeholder = "1"></input><br/><br/>'
     document.getElementById("form-contents").appendChild(element);
 }
 
