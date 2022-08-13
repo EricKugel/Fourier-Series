@@ -1,6 +1,7 @@
 var canvas;
 var ctx;
 const FPS = 60;
+const SPEED_SCALE = 0.5;
 const SIZE = 50;
 var circle;
 
@@ -22,7 +23,7 @@ class Circle {
             this.radius = Math.abs(this.radius);
             this.theta += Math.PI;
         }
-        this.speed = (circles[index].frequency * Math.PI * 2) / FPS;
+        this.speed = SPEED_SCALE * (circles[index].frequency * Math.PI * 2) / FPS;
         this.point_x = this.x + Math.cos(this.theta) * this.radius;
         this.point_y = this.y + Math.sin(this.theta) * this.radius;
         this.index = index;
