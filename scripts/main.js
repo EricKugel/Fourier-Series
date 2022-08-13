@@ -1,7 +1,7 @@
 var canvas;
 var ctx;
 const FPS = 60;
-const SPEED_SCALE = 0.5;
+const SPEED_SCALE = 0.05;
 const SIZE = 50;
 var circle;
 
@@ -69,24 +69,26 @@ class Circle {
 }
 
 function main() {
-    var unsorted_circles = JSON.parse(document.cookie.substring(8));
+    // var unsorted_circles = JSON.parse(document.cookie.substring(8));
+    var unsorted_circles = getCircles();
     circles = []
     for (var i = 0; i < unsorted_circles.length; i++) {
         var unsorted_circle = unsorted_circles[i];
-        var radius = unsorted_circle.radius;
-        var added = false;
-        for (var j = 0; j < circles.length; j++) {
-            if (Math.abs(radius) > Math.abs(circles[j].radius)) {
-                circles.splice(j, 0, unsorted_circle);
-                added = true;
-                break;
+        if (unsorted_circle.frequency != 0) {
+            var radius = unsorted_circle.radius;
+            var added = false;
+            for (var j = 0; j < circles.length; j++) {
+                if (Math.abs(radius) > Math.abs(circles[j].radius)) {
+                    circles.splice(j, 0, unsorted_circle);
+                    added = true;
+                    break;
+                }
+            }
+            if (!added) {
+                circles.push(unsorted_circle);
             }
         }
-        if (!added) {
-            circles.push(unsorted_circle);
-        }
     }
-
     canvas = document.getElementById("canvas");
     canvas.setAttribute("width", window.innerWidth);
     canvas.setAttribute("height", window.innerHeight);
