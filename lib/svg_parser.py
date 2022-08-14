@@ -18,7 +18,7 @@
 import os
 os.chdir("lib")
 data = open("rock.txt", "r").read().split(" ")
-coords = [[210.85763,-91.37164]]
+coords = [[230.18626,-100.15738]]
 for i, point in enumerate(data):
     point = point.split(",")
     coords.append((float(point[0]) + coords[i-1][0], float(point[1]) + coords[i-1][1]))
