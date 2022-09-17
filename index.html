@@ -2,24 +2,14 @@
 <html>
     <head>
         <title>Fourier Series</title>
-        <script src = "scripts/form.js"></script>
-        <link rel = stylesheet href = "styles/formStyles.css">
+        <script src = "scripts/main.js"></script>
+        <script src = "scripts/math.js"></script>
+        <script src = "scripts/coords.js"></script>
+        <script src = "scripts/svgParser.js"></script>
+        <link rel = "stylesheet" href = "styles/styles.css"/>
     </head>
     <body>
-        <div id = "form">
-            <div id = "form-contents">
-                <button id = "graph" onclick = "graph()">
-                    Graph
-                </button>
-                <div class = "circle-input">
-                    <a class = "exit" href = "#" onclick = "exit(this)">x</a><br/>
-                    X, Y   <input type = "text" placeholder = "2, 3"></input><br/><br/>
-                    Frequency:   <input type = "text" placeholder = "1"></input><br/><br/>
-                </div>
-            </div>
-            <div>
-                <button id = "button" onclick = "plus()">+</button>
-            </div>
-        </div>
+        <canvas id = canvas></canvas>
+        <p id = "credit">Eric Kugel and Leo Ting 2022</p>
     </body>
 </html>

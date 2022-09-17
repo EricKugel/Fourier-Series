@@ -1,5 +1,3 @@
 # Fourier Series
 
-This is an animation of a Fourier Series. I'm not really sure how it works, I just know how to make it.  
-
-There's now an interface for entering circles. Eventually you will be able to enter coordinates and the circles will be generated.
+This takes an svg of one path (M, m, L, l, C, c, Q, and q commands) and draws it using a fourier series. I'm not sure how any of the math works, that was Leo's job.

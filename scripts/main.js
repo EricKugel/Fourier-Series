@@ -5,7 +5,7 @@ const SPEED_SCALE = 0.05;
 const SIZE = 50;
 var circle;
 
-const points = [];
+var points = [];
 var circles;
 var colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"];
 class Circle {
@@ -69,9 +69,9 @@ class Circle {
 }
 
 function main() {
-    // var unsorted_circles = JSON.parse(document.cookie.substring(8));
-    var unsorted_circles = getCircles();
-    circles = []
+    var unsorted_circles = getCircles(100);
+    points = [];
+    circles = [];
     for (var i = 0; i < unsorted_circles.length; i++) {
         var unsorted_circle = unsorted_circles[i];
         if (unsorted_circle.frequency != 0) {
@@ -115,5 +115,12 @@ function tick() {
 }
 
 window.onload = function() {
-  main();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.has("svg")) {
+        let fileName = urlParams.get("svg");
+        draw(fileName);
+    } else {
+        drawTeapot();
+    }
 }
