@@ -1,9 +1,9 @@
 function u(t) {
-    return COORDS[Math.floor(COORDS.length * t)][0] / 25;
+    return COORDS[Math.floor(COORDS.length * t)][0] / 50;
 }
 
 function v(t) {
-    return COORDS[Math.floor(COORDS.length * t)][1] / -25;
+    return COORDS[Math.floor(COORDS.length * t)][1] / -50;
 }
 
 const n = 3000;
