@@ -34,7 +34,7 @@ function doTheThing(path) {
             queue = [];
         } else {
             if (!"MmLlCcQqZz".includes(objects[i])) {
-                alert("Invalid svg");
+                alert(objects[i]);
                 return;
             }
             op = objects[i];
