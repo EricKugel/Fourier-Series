@@ -33,7 +33,7 @@ function doTheThing(path) {
             }
             queue = [];
         } else {
-            if (!"MmLlCcQqZz".includes(objects[i])) {
+            if (!"MmLlCcQqZzHhVv".includes(objects[i])) {
                 alert(objects[i]);
                 return;
             }
@@ -62,6 +62,22 @@ function L(a, b) {
 
 function l(a, b) {
     L(x + a, y + b);
+}
+
+function H(a) {
+    L(a, y);
+}
+
+function h(a) {
+    H(x + a);
+}
+
+function V(a) {
+    L(x, a);
+}
+
+function v(a) {
+    V(y + a);
 }
 
 function C(a1, b1, a2, b2, a, b) {
