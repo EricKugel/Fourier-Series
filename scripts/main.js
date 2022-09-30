@@ -10,7 +10,7 @@ const variables = {
     "scale": "50",
     "circles": "100",
     "cpn": "30"
-}
+} // asdfasdjklf;ajsdklf
 
 var points = [];
 var circles;
