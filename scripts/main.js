@@ -7,9 +7,9 @@ var circle;
 
 const variables = {
     "svg": "teapot",
-    "scale": 50,
-    "circles": 100,
-    "cpn": 30
+    "scale": "50",
+    "circles": "100",
+    "cpn": "30"
 }
 
 var points = [];
