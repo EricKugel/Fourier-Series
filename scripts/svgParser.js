@@ -2,7 +2,6 @@ var x = 0;
 var y = 0;
 
 const COORDS = [];
-const COORDS_PER_NODE = 30;
 
 function doTheThing(path) {
     let objects = path.split(" ");
@@ -52,6 +51,7 @@ function m(a, b) {
 }
 
 function L(a, b) {
+    let COORDS_PER_NODE = parseInt(variables["cpn"]);
     let lineLength = Math.hypot(a-x, b-y);
     for (var i = 0; i < COORDS_PER_NODE; i++) {
         COORDS.push([(a-x) * (i/COORDS_PER_NODE) + x, 
@@ -81,6 +81,7 @@ function v(a) {
 }
 
 function C(a1, b1, a2, b2, a, b) {
+    let COORDS_PER_NODE = parseInt(variables["cpn"]);
     let lineLength = Math.hypot(a-x, b-y);
     for (var i = 0; i < COORDS_PER_NODE; i++) {
         let t = i / COORDS_PER_NODE;
@@ -96,6 +97,7 @@ function c(a1, b1, a2, b2, a, b) {
 }
 
 function Q(a1, b1, a, b) {
+    let COORDS_PER_NODE = parseInt(variables["cpn"]);
     let lineLength = Math.hypot(a-x, b-y);
     for (var i = 0; i < COORDS_PER_NODE; i++) {
         let t = i / COORDS_PER_NODE;
