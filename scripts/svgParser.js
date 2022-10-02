@@ -64,21 +64,21 @@ function l(a, b) {
     L(x + a, y + b);
 }
 
-function H(a) {
-    L(a, y);
-}
+// function H(a) {
+//     L(a, y);
+// }
 
-function h(a) {
-    H(x + a);
-}
+// function h(a) {
+//     H(x + a);
+// }
 
-function V(a) {
-    L(x, a);
-}
+// function V(a) {
+//     L(x, a);
+// }
 
-function v(a) {
-    V(y + a);
-}
+// function v(a) {
+//     V(y + a);
+// }
 
 function C(a1, b1, a2, b2, a, b) {
     let lineLength = Math.hypot(a-x, b-y);
