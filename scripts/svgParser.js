@@ -4,6 +4,7 @@ var y = 0;
 const COORDS = [];
 const COORDS_PER_NODE = 30;
 
+// Eric Kugel
 function doTheThing(path) {
     let objects = path.split(" ");
     var op = objects[0];

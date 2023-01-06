@@ -1,3 +1,5 @@
+// All this is Leo's
+
 function u(t) {
     return COORDS[Math.floor(COORDS.length * t)][0] / 50;
 }

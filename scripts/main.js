@@ -8,6 +8,9 @@ var circle;
 var points = [];
 var circles;
 var colors = ["red", "orange", "yellow", "green", "blue", "purple", "black"];
+
+// Eric Kugel
+// Don't ask me how any of this works because I don't remember
 class Circle {
     constructor(index = 0) {
         this.theta = circles[index].theta;
